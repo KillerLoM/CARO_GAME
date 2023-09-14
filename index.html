@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="container">
+        <h1 class="text-center" id ="c">GAME CARO</h1>
+        <div class="input-container text-center">
+            <div class="input-field">
+                <p id="rowError" style="color: red;"></p>
+                <input type="text" id="rowInput" placeholder="Number of rows" required>
+                <p id="columnError" style="color: red;"></p>
+                <input type="text" id="columnInput" placeholder="Number of column" required>
+            </div>
+            <button type="button" class="btn btn-outline-success" id="create">Generate</button>
+            <script type="text/javascript" src="js/homePage.js"></script>
+            </br>
+            <div class="options ">
+                <label for="list-type-play"></label>
+                <select id="list-type-play" class="hide-option option" required>
+                    <option value="2Players">2 players</option>
+                    <option value="playerComputer">Player vs computer</option>
+                </select>
+            </div>
+            <br>
+            <div id="difficulty" class="hide-option"  style="display: none;" >
+                <label for="difficulty-level">Difficulty Level:</label>
+                <select id="difficulty-level" type = "button" required>
+                    <option value="hard" class ="dropdown-item active">Hard</option>
+                    <option value="medium" class ="dropdown-item" >Medium</option>
+                    <option value="easy" class ="dropdown-dividere" >Easy</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('list-type-play').addEventListener('change', function() {
+    if (this.value === 'playerComputer') {
+        document.getElementById('difficulty').style.display = 'block';
+    } 
+    if(this.value === '2Players') {     
+        document.getElementById('difficulty').style.display = 'none';
+    }
+});
+    </script>
+</body>
+</html>
