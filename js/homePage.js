@@ -10,12 +10,12 @@ function startGame(numberOfRows,numberOfColumns) {
         document.getElementById("columnInput").value = "";
         document.getElementById("list-type-play").value = "2Players";
         document.getElementById('difficulty').style.display = "none";
-        window.location.href = "http://127.0.0.1:5500/game.html?rows="+numberOfRows+"&columns="+numberOfColumns+"&type="+type+"&mode="+mode;
+        window.location.href = "/game.html?rows="+numberOfRows+"&columns="+numberOfColumns+"&type="+type+"&mode="+mode;
     }
     else {
         document.getElementById("rowInput").value = "";
         document.getElementById("columnInput").value = "";
-        window.location.href = "http://127.0.0.1:5500/game.html?rows="+numberOfRows+"&columns="+numberOfColumns+"&type="+type;
+        window.location.href = "/game.html?rows="+numberOfRows+"&columns="+numberOfColumns+"&type="+type;
     }
     
 }
