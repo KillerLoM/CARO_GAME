@@ -5,6 +5,8 @@ let newId = "";
 let col = 0;
 let row = 0;
 let mode = "";
+let phase = 0;
+let counter = 0;
 let SCORE_BOT = new Map([
   [0, 0],
   [0, 0],
@@ -29,13 +31,14 @@ function renderTable(columns, rows) {
     for (let row = 0; row < rows; row++) {
       arr.push("");
       resume += "<td>";
-      resume += "<button  id='btn" + col + "_" + row + "' onclick='handlePlay(this.id)'></button>";
+      resume += "<button  title='Columns = " + col + "\nRow = " + row + "' id='btn" + col + "_" + row + "' onclick='handlePlay(this.id)'></button>";
       resume += "</td>";
     }
     resume += "</tr>";
     matrixGame.push(arr);
   }
   resume += "</table>";
+
   return resume;
 }
 function init() {
@@ -45,12 +48,40 @@ function init() {
   const urlParams = new URLSearchParams(window.location.search);
   let rows = urlParams.get("rows");
   let columns = urlParams.get("columns");
+  phase = 1;
   type = urlParams.get("type");
+  var chatbox = document.getElementById("chatbox");
+    chatbox.innerHTML += "<h1>" +  "GAME STARTED" + "</h1>";
+    chatbox.innerHTML += "<hr/>";
+    chatbox.innerHTML += "<p> Phase " + phase +  "</p>";
   if (type === "playerComputer") {
     mode = urlParams.get("mode");
     console.log(mode);
   }
   document.getElementById("output").innerHTML = renderTable(columns, rows);
+}
+function chatBox(col, row, player){
+  var chatbox = document.getElementById("chatbox");
+  counter ++;
+  if(counter > 2 ){
+      phase++;
+      counter = 0;
+      chatbox.innerHTML += "<hr/>";
+      chatbox.innerHTML += "<p> Phase " + phase +  "</p>";
+  }
+  if (type === "2Players"){
+    chatbox.innerHTML += "<p>  " + " Player(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
+  }
+  
+  if(type === "playerComputer"){
+    if (player === "X"){
+      chatbox.innerHTML += "<p>  " +  + " Player(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
+    }
+    else {
+      chatbox.innerHTML += "<p>  " +  + " Bot(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
+    }
+  }
+  
 }
 function handlePlay(id) {
   let points = id.split("_");
@@ -95,11 +126,12 @@ function playGame2Players(id, col, row) {
   if (player === "X") {
     var button = document.getElementById(id);
     if (button.innerHTML !== "X") {
-      button.innerHTML = player;z
+      button.innerHTML = player;
       button.disabled = true;
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
+    chatBox(col,row,player);
   }
   if (checkWin(col, row, player)) {
     return "WIN";
@@ -112,6 +144,7 @@ function playGame2Players(id, col, row) {
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
+    chatBox(col,row,player);
   }
   if (checkWin(col, row, player)) {
     return "WIN";
@@ -127,10 +160,11 @@ function playGameBot(id, col, row) {
     var button = document.getElementById(id);
     if (button.innerHTML !== "X") {
       button.innerHTML = player;
-      matrixGame[col][row] = player;
       button.disabled = true;
       button.style.backgroundColor = "white";
     }
+    matrixGame[col][row] = player;
+    chatBox(col,row,player);
   }
   if (checkWin(col,row,  player)) {
     return "WIN";
@@ -149,6 +183,7 @@ function playGameBot(id, col, row) {
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
+    chatBox(col,row,player);
   }
   if (checkWin(col,row,  player)) {
     return "LOOSE";
