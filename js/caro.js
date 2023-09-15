@@ -276,7 +276,7 @@ function getLeftDiagonal(x, y, player) {
       x - i >= 0 &&
       y - i >= 0 &&
       y - i < matrixGame[1].length &&
-      x - i <= matrixGame[0].length &&
+      x - i < matrixGame[0].length &&
       matrixGame[x - i][y - i] === player
     ) {
       count++;
@@ -355,7 +355,7 @@ function handleBot() {
               getVertical(i, j, "X"),
               getRightDiagonal(i, j, "X"),
               getLeftDiagonal(i, j, "X")
-            ) - 1
+            ) 
           );
         if (maxScore < score) {
           maxScore = score;
