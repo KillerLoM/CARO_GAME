@@ -1,17 +1,17 @@
 const MAP_SCORE_BOT_HARD = new Map([
   [6, 100]
-  [5, 11],
+  [5, 110],
   [4, 8],
   [3, 6],
   [2, 3],
   [1, 2],
 ]);
 const MAP_SCORE_USER_HARD = new Map([
-  [5, 10],
-  [4, 9],
-  [3, 7],
-  [2, 4],
-  [1, 1],
+  [5, 100],
+  [4, 90],
+  [3, 70],
+  [2, 40],
+  [1, 10],
   [0, 0],
 ]);
 const MAP_SCORE_BOT_EASY = new Map([
