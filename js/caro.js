@@ -43,8 +43,7 @@ function renderTable(columns, rows) {
 }
 function init() {
   player = "X";
-  countVertical1 = 0;
-  countHorizontal1 = 0;
+  counter = 0;
   const urlParams = new URLSearchParams(window.location.search);
   let rows = urlParams.get("rows");
   let columns = urlParams.get("columns");
@@ -62,8 +61,8 @@ function init() {
 }
 function chatBox(col, row, player){
   var chatbox = document.getElementById("chatbox");
-  counter ++;
-  if(counter > 2 ){
+  
+  if(counter  == 2 ){
       phase++;
       counter = 0;
       chatbox.innerHTML += "<hr/>";
@@ -81,7 +80,7 @@ function chatBox(col, row, player){
       chatbox.innerHTML += "<p>  "  + " Bot(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
     }
   }
-  
+  counter ++;
 }
 function handlePlay(id) {
   let points = id.split("_");
@@ -164,11 +163,12 @@ function playGameBot(id, col, row) {
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
-    chatBox(col,row,player);
+    
   }
   if (checkWin(col,row,  player)) {
     return "WIN";
   }
+  chatBox(col,row,player);
   player = player === "X" ? "O" : "X";
   let pointsOfBot = handleBot();
   console.log(pointsOfBot);
@@ -183,11 +183,12 @@ function playGameBot(id, col, row) {
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
-    chatBox(col,row,player);
+    
   }
   if (checkWin(col,row,  player)) {
     return "LOOSE";
   }
+  chatBox(col,row,player);
   player = player === "X" ? "O" : "X";
   if (checkDraw()) {
     return "DRAW";
