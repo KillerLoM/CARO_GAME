@@ -1,7 +1,7 @@
 const MAP_SCORE_BOT_HARD = new Map([
   [5, 11],
-  [4, 8],
-  [3, 6],
+  [4, 7],
+  [3, 5],
   [2, 4],
   [1, 2],
   [0, 1]
@@ -9,8 +9,8 @@ const MAP_SCORE_BOT_HARD = new Map([
 const MAP_SCORE_USER_HARD = new Map([
   [5, 10],
   [4, 9],
-  [3, 7],
-  [2, 5],
+  [3, 8],
+  [2, 6],
   [1, 3],
   [0, 0],
 ]);
