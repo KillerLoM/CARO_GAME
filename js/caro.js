@@ -50,6 +50,7 @@ function init() {
   phase = 1;
   type = urlParams.get("type");
   var chatbox = document.getElementById("chatbox");
+    chatbox.innerHTML = "";
     chatbox.innerHTML += "<h1>" +  "GAME STARTED" + "</h1>";
     chatbox.innerHTML += "<hr/>";
     chatbox.innerHTML += "<p> Phase " + phase +  "</p>";
@@ -69,10 +70,12 @@ function chatBox(col, row, player){
       chatbox.innerHTML += "<p> Phase " + phase +  "</p>";
   }
   if (type === "2Players"){
+    counter ++;
     chatbox.innerHTML += "<p>  " + " Player(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
   }
   
   if(type === "playerComputer"){
+    counter ++;
     if (player === "X"){
       chatbox.innerHTML += "<p>  "  + " Player(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
     }
@@ -80,7 +83,7 @@ function chatBox(col, row, player){
       chatbox.innerHTML += "<p>  "  + " Bot(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
     }
   }
-  counter ++;
+  
 }
 function handlePlay(id) {
   let points = id.split("_");
