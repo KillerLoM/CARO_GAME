@@ -75,10 +75,10 @@ function chatBox(col, row, player){
   
   if(type === "playerComputer"){
     if (player === "X"){
-      chatbox.innerHTML += "<p>  " +  + " Player(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
+      chatbox.innerHTML += "<p>  "  + " Player(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
     }
     else {
-      chatbox.innerHTML += "<p>  " +  + " Bot(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
+      chatbox.innerHTML += "<p>  "  + " Bot(" + player + ")  " + "Col = " + col + "; Row = " + row + "</p>";
     }
   }
   
