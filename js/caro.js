@@ -157,7 +157,6 @@ function playGame2Players(id, col, row) {
   }
 }
 function playGameBot(id, col, row) {
-
   if (player === "X") {
     var button = document.getElementById(id);
     if (button.innerHTML !== "X") {
@@ -166,12 +165,11 @@ function playGameBot(id, col, row) {
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
-    
+    chatBox(col,row,player);
   }
   if (checkWin(col,row,  player)) {
     return "WIN";
   }
-  chatBox(col,row,player);
   player = player === "X" ? "O" : "X";
   let pointsOfBot = handleBot();
   console.log(pointsOfBot);
@@ -186,18 +184,17 @@ function playGameBot(id, col, row) {
       button.style.backgroundColor = "white";
     }
     matrixGame[col][row] = player;
-    
+    chatBox(col,row,player);
   }
   if (checkWin(col,row,  player)) {
     return "LOOSE";
   }
-  chatBox(col,row,player);
   player = player === "X" ? "O" : "X";
   if (checkDraw()) {
     return "DRAW";
   }
 }
-function getHorizontal(x, y, player) {
+function getNumberOfHorizontal(x, y, player) {
   let count = 1;
   for (let i = 1; i < 5; i++) {
     if (y + i < matrixGame.length && matrixGame[x][y + i] === player) {
@@ -218,7 +215,7 @@ function getHorizontal(x, y, player) {
   }
   return count;
 }
-function getVertical(x, y, player) {
+function getNumberOfVertical(x, y, player) {
   let count = 1;
   for (let i = 1; i < 5; i++) {
     if (x + i < matrixGame.length && matrixGame[x + i][y] === player) {
@@ -240,7 +237,7 @@ function getVertical(x, y, player) {
 
   return count;
 }
-function getRightDiagonal(x, y, player) {
+function getNumberOfRightDiagonal(x, y, player) {
   let count = 1;
   for (let i = 1; i < 5; i++) {
     if (
@@ -269,7 +266,7 @@ function getRightDiagonal(x, y, player) {
   return count;
 }
 
-function getLeftDiagonal(x, y, player) {
+function getNumberOfLeftDiagonal(x, y, player) {
   let count = 1;
   for (let i = 1; i < 5; i++) {
     if (
@@ -301,10 +298,10 @@ function getLeftDiagonal(x, y, player) {
 }
 function checkWin(col, row, player) {
   return (
-    getHorizontal(col, row, player) == 5 ||
-    getVertical(col, row, player) == 5 ||
-    getLeftDiagonal(col, row, player) == 5 ||
-    getRightDiagonal(col, row, player) == 5
+    getNumberOfHorizontal(col, row, player) == 5 ||
+    getNumberOfVertical(col, row, player) == 5 ||
+    getNumberOfLeftDiagonal(col, row, player) == 5 ||
+    getNumberOfRightDiagonal(col, row, player) == 5
   );
 }
 function checkDraw() {
@@ -343,18 +340,18 @@ function handleBot() {
         let score =
           SCORE_BOT.get(
             Math.max(
-              getHorizontal(i, j, "O"),
-              getVertical(i, j, "O"),
-              getRightDiagonal(i, j, "O"),
-              getLeftDiagonal(i, j, "O")
+              getNumberOfHorizontal(i, j, "O"),
+              getNumberOfVertical(i, j, "O"),
+              getNumberOfRightDiagonal(i, j, "O"),
+              getNumberOfLeftDiagonal(i, j, "O")
             )
           ) +
           SCORE_USER.get(
             Math.max(
-              getHorizontal(i, j, "X"),
-              getVertical(i, j, "X"),
-              getRightDiagonal(i, j, "X"),
-              getLeftDiagonal(i, j, "X")
+              getNumberOfHorizontal(i, j, "X"),
+              getNumberOfVertical(i, j, "X"),
+              getNumberOfRightDiagonal(i, j, "X"),
+              getNumberOfLeftDiagonal(i, j, "X")
             ) 
           );
         if (maxScore < score) {
