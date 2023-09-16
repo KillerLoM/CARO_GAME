@@ -15,9 +15,9 @@ const MAP_SCORE_USER_HARD = new Map([
   [0, 0],
 ]);
 const MAP_SCORE_BOT_EASY = new Map([
-  [5, 800],
-  [4, 700],
-  [3, 600],
+  [5, 8000],
+  [4, 7000],
+  [3, 6000],
   [2, 500],
   [1, 200],
   [0, 1]
