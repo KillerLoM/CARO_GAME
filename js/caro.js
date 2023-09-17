@@ -199,7 +199,7 @@ function playGameBot(id, col, row) {
 function getNumberOfHorizontal(x, y, player) {
   let count = 1;
   for (let i = 1; i < 5; i++) {
-    if (y + i < matrixGame.length && matrixGame[x][y + i] === player) {
+    if (y + i < matrixGame[1].length && matrixGame[x][y + i] === player) {
       count++;
     } else {
       break;
@@ -220,7 +220,7 @@ function getNumberOfHorizontal(x, y, player) {
 function getNumberOfVertical(x, y, player) {
   let count = 1;
   for (let i = 1; i < 5; i++) {
-    if (x + i < matrixGame.length && matrixGame[x + i][y] === player) {
+    if (x + i < matrixGame[0].length && matrixGame[x + i][y] === player) {
       count++;
     } else {
       break;
@@ -307,8 +307,8 @@ function checkWin(col, row, player) {
   );
 }
 function checkDraw() {
-  for (let i = 0; i < matrixGame.length; i++) {
-    for (let j = 0; j < matrixGame[i].length; j++) {
+  for (let i = 0; i < matrixGame[0].length; i++) {
+    for (let j = 0; j < matrixGame[1].length; j++) {
       if (matrixGame[i][j] === "") {
         return false;
       }

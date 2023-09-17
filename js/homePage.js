@@ -1,5 +1,3 @@
-
-
 function startGame(numberOfRows,numberOfColumns) {
 
     var type = document.getElementById("list-type-play").value;
