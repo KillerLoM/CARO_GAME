@@ -8,6 +8,7 @@ let mode = "";
 let phase = 0;
 let counter = 0;
 let advancedPoint = 0;
+let advancedPointBot = 0;
 let SCORE_BOT = new Map([
   [0, 0],
   [0, 0],
@@ -319,17 +320,20 @@ function setModeBot() {
   if (mode === "hard") {
     SCORE_BOT = MAP_SCORE_BOT_HARD;
     SCORE_USER = MAP_SCORE_USER_HARD;
-    advancedPoint = -1;
+    advancedPoint = 0;
+    advancedPointBot = -1;
   }
   else if (mode === "easy") {
     SCORE_BOT = MAP_SCORE_BOT_EASY;
     SCORE_USER = MAP_SCORE_USER_EASY;
-    advancedPoint = 1;
+    advancedPoint = 0;
+    advancedPointBot = 0;
   }
   else if (mode === "medium") {
     SCORE_BOT = MAP_SCORE_BOT_MEDIUM;
     SCORE_USER = MAP_SCORE_USER_MEDIUM;
-    advancedPoint = 0;
+    advancedPoint = -1;
+    advancedPointBot = 1;
   }
 }
 
@@ -349,14 +353,14 @@ function handleBot() {
               getNumberOfRightDiagonal(i, j, "O"),
               getNumberOfLeftDiagonal(i, j, "O")
             )
-          ) +
+          )+ advancedPointBot +
           SCORE_USER.get(
             Math.max(
               getNumberOfHorizontal(i, j, "X"),
               getNumberOfVertical(i, j, "X"),
               getNumberOfRightDiagonal(i, j, "X"),
               getNumberOfLeftDiagonal(i, j, "X")
-            ) + advancedPoint
+            ) + advancedPoint 
           );
         if (maxScore < score) {
           maxScore = score;
