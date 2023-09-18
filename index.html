@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="container">
+    <div id="homePage" style="display: block;">
+            <div id="container">
         <h1 class="text-center" id ="c">GAME CARO</h1>
         <div class="input-container text-center">
             <div class="input-field">
@@ -49,5 +50,24 @@
     }
 });
     </script>
+    </div>
+    <div id="game" style="display: none;">
+        <title>
+            Game
+        </title>
+        <h1 class="text-center heading">GAME CARO</h1>
+        <div class="input-container text-center">
+        <div id = "main">
+            <div class="render" id = "output"></div>
+            <div id="chatbox"></div>
+
+        </div>
+        <script type="text/javascript" src="js/miniMaxMap.js"></script>
+        <script type="text/javascript" src="js/homePage.js"></script>
+        <script type="text/javascript" src="js/caro.js"></script>
+        
+         </div>
+        </div>
+
 </body>
 </html>
